@@ -1,0 +1,37 @@
+{% extends 'websites/base.html' %}
+
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid" style="height: 100%";>
+    <div class="row" style="height: 100%">
+        <div class="col-md-4 col-2"></div>
+        <div class="col-md-4 col-8 d-flex justify-content-center">
+            <div style="width: 100%; margin: auto;">
+                <div class="title-auth">
+                    <p>belajar.id</p>
+                </div>
+                <div style="width: 100%; margin: auto;">
+                    <form action="" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {% for field in form %}
+                            <p>
+                                {{ field }}<br>
+                                {% for error in field.errors %}
+                                    <p style="color: red">{{ error }}</p>
+                                {% endfor %}
+                            </p>
+                        {% endfor %}
+                        <button class="btn btn-primary btn-block btn-large" type="submit">let me in</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-2"></div>
+    </div>
+</div>
+{% endblock %}

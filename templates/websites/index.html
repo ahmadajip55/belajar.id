@@ -1,0 +1,24 @@
+{% extends 'websites/base.html' %}
+
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="login">
+    <h1>Login</h1>
+    <form method="post">
+        <input type="text" name="u" placeholder="Username" required="required" />
+        <input type="password" name="p" placeholder="Password" required="required" />
+        <button type="submit" class="btn btn-primary btn-block btn-large">Let me in.</button>
+    </form>
+    </br>
+    {% if user.username %}
+        <a href="{% url 'websites:logout' %}">
+            <button type="submit" class="btn btn-primary btn-block btn-large">Logout</button>
+        </a>
+    {% endif %}
+</div>
+{% endblock %}
